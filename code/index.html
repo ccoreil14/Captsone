@@ -1,15 +1,32 @@
-<!DOCTYPE html>
 <html>
-    <head>
-        <title>Home</title>
-        <link rel="shortcut icon" href="assets/images/Logo2.png">
-        <link rel="stylesheet" href="main.css">
-    </head>
-    
-    <body>
-        <h1>Nothing here yet but here is a logo</h1>
-        
-        <img src="assets/images/Logo3.png"/>
-    </body>
-    <footer>Page is owned and made by Christian F. Coreil</footer>
+
+<head>
+    <title>Home</title>
+    <link rel="shortcut icon" href="assets/images/Logo2.png">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div id="menu" class="collapseBox">
+        <div id="menuHead" class="boxHeader">Login
+            <img id="menuArrow" class="arrow" src="assets/images/arrow.png" onclick="toggleMenu('menuInsides')" />
+        </div>
+        <ul id="menuInsides" class="boxInsides" style="visibility: collapse;">
+            <li class="insidesItem">Po</li>
+            <li class="insidesItem">Po</li>
+        </ul>
+    </div>
+    <div id="chatBox" class="collapseBox">
+        <div id="chatBoxHead" class="boxHeader">ChatBox
+            <img id="menuArrow" class="arrow" src="assets/images/arrow.png" onclick="toggleMenu('chatBoxInsides')" />
+        </div>
+        <ul id="chatBoxInsides" class="boxInsides" style="visibility: collapse;">
+            <li class="insidesItem">Hi</li>
+        </ul>
+    </div>
+    <img id="logo" src="assets/images/Logo3.png" />
+</body>
+<footer>Page is owned and made by Christian F. Coreil</footer>
+<script src="script.js"></script>
+
 </html>
