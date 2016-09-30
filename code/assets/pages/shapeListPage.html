@@ -1,0 +1,74 @@
+<html>
+
+<head>
+    <title>ShapesList</title>
+    <link rel="shortcut icon" href="../images/Logo2.png">
+    <link rel="stylesheet" href="../stylesheets/main.css">
+    <link rel="stylesheet" href="../stylesheets/shapeList.css">
+</head>
+
+<body>
+    <div id="menu" class="collapseBox">
+        <div id="menuHead" class="boxHeader">Login
+            <img id="menuArrow" class="arrow" src="../images/arrow.png" onclick="toggleMenu('menuInsides')" />
+        </div>
+        <ul id="menuInsides" class="boxInsides" style="visibility: collapse;">
+            <li class="insidesItem">Po</li>
+            <li class="insidesItem">Po</li>
+        </ul>
+    </div>
+    <div id="chatBox" class="collapseBox">
+        <div id="chatBoxHead" class="boxHeader">ChatBox
+            <img id="menuArrow" class="arrow" src="../images/arrow.png" onclick="toggleMenu('chatBoxInsides')" />
+        </div>
+        <ul id="chatBoxInsides" class="boxInsides" style="visibility: collapse;">
+            <li class="insidesItem">Hi</li>
+        </ul>
+    </div>
+    <img id="logo" src="../images/Logo3.png" />
+
+    <div id="twoD" class="List">
+        <h1>2d Shapes</h1>
+        <ul class="shapeList">
+            <li class="shapeItem">
+                <img class="shapeImg" src="../images/square.png" />
+                <div class="shapeWords">
+                    <h3 class="shapeName">Square</h3>
+                    <p class="shapeFormula">1: Perimeter</p>
+                    <p class="shapeFormula">2: Area</p>
+                </div>
+            </li>
+            <li class="shapeItem">
+                <img class="shapeImg" src="../images/circle.png" />
+                <div class="shapeWords">
+                    <h3 class="shapeName">Circle</h3>
+                    <p class="shapeFormula">1: Circumfrence</p>
+                    <p class="shapeFormula">2: Area</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div id="threeD" class="List">
+        <h1>3d Objects</h1>
+        <ul class="shapeList">
+            <li class="shapeItem">
+                <img class="shapeImg" src="../images/cube.png" />
+                <div class="shapeWords">
+                    <h3 class="shapeName">Right Rectangular Prism</h3>
+                </div>
+            </li>
+            <li class="shapeItem">
+                <img class="shapeImg" src="../images/sphere.gif" />
+                <div class="shapeWords">
+                    <h3 class="shapeName">Sphere</h3>
+                     <p class="shapeFormula">1: Surface Area</p>
+                    <p class="shapeFormula">2: Volume</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+<footer>Site made and owned by Christian F. Coreil</footer>
+<script src="../scripts/main.js"></script>
+
+</html>
