@@ -1,0 +1,42 @@
+.examLogo{
+    width: 100px !important;
+}
+
+.examBox{
+    width: 80%;
+    height: 650px;
+    max-width: 900px;
+    margin-top: 30px;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: scroll;
+}
+
+.examQuestionList{
+    padding-left: 20px;
+}
+
+.examQuestion{
+    list-style-type: none;
+}
+
+.questionImg{
+    
+}
+
+.questionAndInput{
+    
+}
+
+.examDescrip{
+    
+}
+
+.userAnswer{
+    
+}
+
+.submitAnswerBtn{
+    
+}
