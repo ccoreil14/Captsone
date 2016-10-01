@@ -1,42 +1,72 @@
-.examLogo{
+.examLogo {
     width: 100px !important;
 }
 
-.examBox{
+.examBox {
     width: 80%;
     height: 650px;
     max-width: 900px;
-    margin-top: 30px;
+    margin-top: 50px;
     border: 1px solid black;
     margin-left: auto;
     margin-right: auto;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
-.examQuestionList{
+.examQuestionList {
     padding-left: 20px;
 }
 
-.examQuestion{
+.examQuestion {
     list-style-type: none;
+    border: 1px solid black;
+    height: 40%;
+    width: 99%;
 }
 
-.questionImg{
-    
+.questionItem {
+    width: 30%;
+    border: 1px solid black;
+    display: block;
+    margin-right: 2%;
+    float: left;
 }
 
-.questionAndInput{
-    
+.questionImg {}
+
+
+/*Question descrip and user input*/
+
+.questionAndInput {
+    height: 100%;
+    text-align: center;
 }
 
-.examDescrip{
-    
+.questionDescrip {}
+
+.userAnswer {}
+
+.submitAnswerBtn {}
+
+
+/*Question descrip and user input*/
+
+
+/*Answer section*/
+
+.answerBox {
+    text-align: center;
+    height: 100%;
 }
 
-.userAnswer{
-    
+.answerBoxCover {
+    height: 0px;
+    visibility: hidden;
 }
 
-.submitAnswerBtn{
-    
+.answerDescrip {
+    height: 100%;
 }
+
+
+/*Answer Section*/

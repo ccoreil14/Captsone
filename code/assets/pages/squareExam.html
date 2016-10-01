@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    <title>ShapesList</title>
+    <link rel="shortcut icon" href="../images/Logo2.png">
+    <link rel="stylesheet" href="../stylesheets/main.css">
+    <link rel="stylesheet" href="../stylesheets/exam.css">
+</head>
+
+<body>
+    <div id="menu" class="collapseBox">
+        <div id="menuHead" class="boxHeader">Login
+            <img id="menuArrow" class="arrow" src="../images/arrow.png" onclick="toggleMenu('menuInsides')" />
+        </div>
+        <ul id="menuInsides" class="boxInsides" style="visibility: collapse;">
+            <li class="insidesItem">Po</li>
+            <li class="insidesItem">Po</li>
+        </ul>
+    </div>
+    <div id="chatBox" class="collapseBox">
+        <div id="chatBoxHead" class="boxHeader">ChatBox
+            <img id="menuArrow" class="arrow" src="../images/arrow.png" onclick="toggleMenu('chatBoxInsides')" />
+        </div>
+        <ul id="chatBoxInsides" class="boxInsides" style="visibility: collapse;">
+            <li class="insidesItem">Hi</li>
+        </ul>
+    </div>
+    <img id="logo" class="examLogo" src="../images/Logo3.png" />
+    <div class="examBox">
+        <ul class="examQuestionList">
+            <li class="examQuestion">
+                <img class="questionImg questionItem" src="../images/square.png"/>
+                <div class="questionAndInput questionItem">
+                    <p class="questionDescrip">The square has a side length of 4. What is the perimeter.</p>
+                    <input class="userAnswer" />
+                    <button class="submitAnswerBtn">Submit</button>
+                </div>
+                <div class="answerBox questionItem">
+                    <div class="answerBoxCover">Behind these curtains is the answer!</div>
+                    <div class="answerDescrip"><h1>16</h1>Since a square has equal sides, that means every side it 4. 4+4+4+4 = 16.</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+<footer>Site made and owned by Christian F. Coreil</footer>
+<script src="../scripts/main.js"></script>
+
+</html>
