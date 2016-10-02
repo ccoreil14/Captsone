@@ -1,0 +1,80 @@
+<html>
+
+<head>
+    <title>ShapesList</title>
+    <link rel="shortcut icon" href="../images/Logo2.png">
+    <link rel="stylesheet" href="../stylesheets/main.css">
+    <link rel="stylesheet" href="../stylesheets/profilePage.css">
+    <link rel="stylesheet" href="../stylesheets/teacherAccount.css">
+</head>
+
+<body>
+    <div id="menu" class="collapseBox">
+        <div id="menuHead" class="boxHeader"><a href="studentProfilePage">Login Student</a><a href="teacherProfilePage">Login Student</a>
+            <img id="menuArrow" class="arrow" src="../images/arrow.png" onclick="toggleMenu('menuInsides')" />
+        </div>
+        <ul id="menuInsides" class="boxInsides" style="visibility: collapse;">
+            <li class="insidesItem">Po</li>
+            <li class="insidesItem">Po</li>
+        </ul>
+    </div>
+    <div id="chatBox" class="collapseBox">
+        <div id="chatBoxHead" class="boxHeader">ChatBox
+            <img id="menuArrow" class="arrow" src="../images/arrow.png" onclick="toggleMenu('chatBoxInsides')" />
+        </div>
+        <ul id="chatBoxInsides" class="boxInsides" style="visibility: collapse;">
+            <li class="insidesItem">Hi</li>
+        </ul>
+    </div>
+    <img id="logo" src="../images/Logo3.png" />
+    <div class="profileBody">
+        <div class="examItemListBox">
+            <ul class="examItemList">
+                <li class="examItem">
+                    <h3>Square Exam       (Green) 90%</h3>
+                </li>
+            </ul>
+        </div>
+        <div class="classroomBox">
+            <ul class="examItemList">
+                <li class="examItem">
+                    <h3>John Green</h3>
+                </li>
+            </ul>
+        </div>
+        <div class="rightSide">
+            <div class="infoBox">
+                <div class="infoBoxTopRow">
+                    <img class="profilePic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" />
+                    <div class="nameAndPass">
+                        <h4> Name: <input class="nameInput" /></h4>
+                        <h4> Password: <input class="passwordInput" /></h4>
+                    </div>
+                </div>
+                <h4>Profile Picture Link: <input class="profilePicLink" placeholder="http://yoyo.com"/></h4>
+                <div class="infoBoxBottomRow">
+                    <textarea class="bio">Bio</textarea>
+                    <div class="colorAndSave">
+                        <div class="profileColor">Profile color</div>
+                        <button class="saveBtn">Save</button>
+                    </div>
+                </div>
+            </div>
+            <div class="medalListBox">
+                <div class="medalListTitle">Medal List</div>
+                <div class="medalAndName">
+                    <img class="medal unlocked" src="../images/Logo1.png" />
+                    <div class="medalName">medal Done</div>
+                </div>
+                <div class="medalAndName">
+                    <img class="medal locked" src="../images/Logo1.png" />
+                    <div class="medalName">Medal not done</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<footer>Site made and owned by Christian F. Coreil</footer>
+<script src="../scripts/main.js"></script>
+
+</html>

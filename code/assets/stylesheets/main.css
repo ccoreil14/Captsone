@@ -5,6 +5,12 @@ footer {
     transform: translate(-50%, -50%);
 }
 
+/*
+body{
+    min-width: 900px;
+}
+*/
+
 #logo {
     display: block;
     margin-left: auto;
