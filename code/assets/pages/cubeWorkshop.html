@@ -30,9 +30,9 @@
         <div class="side leftSide">
             <div class="formulaArea">
                 <div class="forumla">
-                    <h3>Perimeter:16</h3></div>
+                    <h3>Perimeter<h3 id="surfaceAreaAnsr"></h3></h3></div>
                 <div class="forumla">
-                    <h3>Area:16</h3>
+                    <h3>Volume:<h3 id="volumeAnsr"></h3></h3>
                 </div>
             </div>
             <div class="playBox"></div>
@@ -41,15 +41,15 @@
             <div class="shapeInfoBox">
                 <div class="coreMeasuresBox">
                     <div class="coreMeasure">
-                        <h3>Width</h3>
-                        <input id="widthInput" type="number" value="40" onchange="updateShape()" />
+                        <h3>Width/ Y</h3>
+                        <input id="widthInput" type="number" value="40" onchange="updateShape()update" />
                     </div>
                     <div class="coreMeasure">
-                        <h3>Length</h3>
+                        <h3>Length/ X</h3>
                         <input id="lengthInput" type="number" value="40" onchange="updateShape()" />
                     </div>
                     <div class="coreMeasure">
-                        <h3>Height</h3>
+                        <h3>Height/ Z</h3>
                         <input id="heightInput" type="number" value="40" onchange="updateShape()" />
                     </div>
                 </div>
@@ -70,9 +70,10 @@
 </body>
 <footer>Site made and owned by Christian F. Coreil</footer>
 <script src="../scripts/main.js"></script>
+<script src="../scripts/Math.js"></script>
 <script src="../scripts/three.min.js"></script>
 <script src="../scripts/TrackballControls.js"></script>
-<script src="../scripts/rectTHREE.js"></script>
+<script src="../scripts/prismTHREE.js"></script>
 <script src="../scripts/ButtonActions.js"></script>
 
 </html>

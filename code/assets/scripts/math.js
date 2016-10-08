@@ -1,32 +1,31 @@
+function rectArea() {
 
-function rectArea(){
-    
 }
 
-function perimeter(){
-    
+function perimeter() {
+
 }
 
-function circArea(){
-    
+function circArea() {
+
 }
 
-function circumfrence(){
-    
+function circumfrence() {
+
 }
 
-function prismSurfaceArea(){
-    
+function prismSurfaceArea(x,y,z) {
+    return 2*((x*y)+(y*z)+(z*x));
 }
 
-function prismVolume(){
-    
+function prismVolume(x,y,z) {
+    return (x*y*z);
 }
 
-function sphereSurfaceArea(){
-    
+function sphereSurfaceArea() {
+
 }
 
-function sphereVolume(){
-    
+function sphereVolume() {
+
 }

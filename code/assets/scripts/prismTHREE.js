@@ -73,7 +73,7 @@
      controls.zoomSpeed = 0.2;
      controls.panSpeed = 0.9;
      controls.noZoom = false;
-     controls.noPan = false;
+     controls.noPan = true;
      controls.staticMoving = true;
      controls.dynamicDampingFactor = 0.3;
 
@@ -171,7 +171,7 @@
      }
 
 
-
+     updateFormulas();
 
  }
 
@@ -196,7 +196,7 @@
 
                  SELECTED.position.x = 0;
                  SELECTED.position.y = 0;
-                 mainObj.scale.z = ((arrow3Z - SELECTED.position.z) + 20) / (prismZ/2);
+                 mainObj.scale.z = ((arrow3Z - SELECTED.position.z) + 20) / (prismZ / 2);
                  //                    console.log(SELECTED.position);
                  if (SELECTED.position.z >= (arrow3Z)) {
                      SELECTED.position.z = arrow3Z;
@@ -207,7 +207,7 @@
                  console.log("x");
                  SELECTED.position.y = 0;
                  SELECTED.position.z = 0;
-                 mainObj.scale.x = ((SELECTED.position.x - arrow2X) + 20) / (prismX/2);
+                 mainObj.scale.x = ((SELECTED.position.x - arrow2X) + 20) / (prismX / 2);
                  //                    console.log(SELECTED.position);
                  if (SELECTED.position.x <= (arrow2X)) {
                      SELECTED.position.x = arrow2X;
@@ -218,13 +218,15 @@
                  console.log("y");
                  SELECTED.position.x = 0;
                  SELECTED.position.z = 0;
-                 mainObj.scale.y = ((SELECTED.position.y - arrow1Y) + 20) / (prismY/2);
+                 mainObj.scale.y = ((SELECTED.position.y - arrow1Y) + 20) / (prismY / 2);
                  //                    console.log(SELECTED.position);
                  if (SELECTED.position.y <= (arrow1Y)) {
                      SELECTED.position.y = arrow1Y;
                      mainObj.scale.y = 1;
                  }
              }
+             updateInputs();
+             updateFormulas();
          }
 
          return;
@@ -334,38 +336,72 @@
      mainObj = new THREE.Mesh(mainGeometry, mainMaterial);
      for (i = 0; i < 3; i++) {
          if (i === 0) {
-             arrows[i].position.y = (prismY)+20;
+             arrows[i].position.y = (prismY) + 20;
          } else if (i === 1) {
-             arrows[i].position.x = (prismX)+20;
+             arrows[i].position.x = (prismX) + 20;
          } else if (i === 2) {
-             arrows[i].position.z = -(prismZ)-20;
+             arrows[i].position.z = -(prismZ) - 20;
          }
      }
      scene.add(mainObj);
+     updateFormulas();
  }
 
  function updateShape() {
      scene.remove(mainObj);
-     prismX = 1*document.getElementById("widthInput").value;
-     prismY = 1*document.getElementById("lengthInput").value;
-     prismZ = 1*document.getElementById("heightInput").value;
+     prismX = 1 * document.getElementById("widthInput").value;
+     prismY = 1 * document.getElementById("lengthInput").value;
+     prismZ = 1 * document.getElementById("heightInput").value;
      mainGeometry = new THREE.BoxGeometry(prismX, prismY, prismZ);
      mainObj = new THREE.Mesh(mainGeometry, mainMaterial);
      scene.add(mainObj);
-     
+
      for (i = 0; i < 3; i++) {
          if (i === 0) {
-             arrows[i].position.y = ((prismY)+20);
-//             console.log(arrows[i].position.y+ " : " + (prismY));
+             arrow1Y = arrows[i].position.y = (prismY) + 20;
+             //             console.log(arrows[i].position.y+ " : " + (prismY));
          } else if (i === 1) {
-             arrows[i].position.x = (prismX)+20;
+             arrow2X = arrows[i].position.x = (prismX) + 20;
          } else if (i === 2) {
-             arrows[i].position.z = -(prismZ)-20;
-//              console.log(arrows[i].position.y+ " : " + (prismZ));
+             arrow3Z = arrows[i].position.z = -(prismZ) - 20;
+             //              console.log(arrows[i].position.y+ " : " + (prismZ));
          }
      }
+     updateFormulas();
  }
 
  function updateInputs() {
+     var arrowY = arrows[0].position.y;
+     var arrowX = arrows[1].position.x;
+     var arrowZ = -arrows[2].position.z;
+
+     var wInput = document.getElementById("widthInput");
+     var lInput = document.getElementById("lengthInput");
+     var hInput = document.getElementById("heightInput");
+
+     wInput.value = Math.round(arrowY) - 20;
+     lInput.value = Math.round(arrowX) - 20;
+     hInput.value = Math.round(arrowZ) - 20;
 
  }
+
+ function updateFormulas() {
+
+     var wInput = document.getElementById("widthInput");
+     var lInput = document.getElementById("lengthInput");
+     var hInput = document.getElementById("heightInput");
+
+     document.getElementById("surfaceAreaAnsr").innerText = prismSurfaceArea(wInput.value, lInput.value, hInput.value);
+     document.getElementById("volumeAnsr").innerText = prismVolume(wInput.value, lInput.value, hInput.value);
+
+ }
+
+
+
+
+
+
+
+
+
+ //yo
