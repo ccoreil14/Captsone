@@ -8,6 +8,9 @@
     max-width: 1200px;
 }
 
+body{
+    min-width: 1900px;
+}
 
 /*Areas on the left side of the screen*/
 .side{
