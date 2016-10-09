@@ -14,6 +14,7 @@
  var prismZ = document.getElementById("heightInput").value;
  var arrow1Y, arrow2X, arrow3Z;
  var lineX, lineY, lineZ;
+ var glowLineX, glowLineY, glowLineZ;
 
  var playbox = document.getElementsByClassName("playBox")[0];
  var threeHeight = 500;
@@ -95,6 +96,41 @@
 
      scene.add(mainObj);
 
+     
+     
+     
+     glowLineGeometry = new THREE.CylinderGeometry(1, 1, 40);
+     glowLineMaterial = new THREE.LineBasicMaterial({
+         color: 0xffffff,
+         transparent: true,
+         opacity: 0.8
+     });
+     
+     glowLineX = new THREE.Mesh(glowLineGeometry, glowLineMaterial);
+     glowLineX.position.x = 20;
+     glowLineX.position.z = 20;
+     glowLineX.visible = false;
+     scene.add(glowLineX);
+     
+     glowLineY = new THREE.Mesh(glowLineGeometry, glowLineMaterial);
+     glowLineY.position.y = 20;
+     glowLineY.position.z = 20;
+     glowLineY.visible = false;
+     glowLineY.rotation.x = 1.569;
+     glowLineY.rotation.z = 1.569;
+     scene.add(glowLineY);
+     
+     glowLineZ = new THREE.Mesh(glowLineGeometry, glowLineMaterial);
+     
+     glowLineZ.position.x = 20;
+     glowLineZ.position.y =20;
+     glowLineZ.visible = false;
+     glowLineZ.rotation.x = 1.569;
+     scene.add(glowLineZ);
+
+     
+     
+     
 
 
      lineGeometry = new THREE.CylinderGeometry(0.1, 0.1, 100000);
@@ -124,12 +160,10 @@
 
 
 
-     var i;
      for (i = 0; i < 3; i++) {
          var arrow = new THREE.Mesh(arrowGeometry, arrowMaterial);
 
          if (i === 0) {
-
              arrow1Y = arrow.position.y = 60;
              arrow.position.x = 0;
              arrow.position.z = 0;
@@ -290,6 +324,7 @@
 
  }
 
+
  function onDocumentMouseUp(event) {
 
      event.preventDefault();
@@ -306,7 +341,6 @@
 
  }
 
- //
 
  function animate() {
 
@@ -316,6 +350,7 @@
 
 
  }
+
 
  function render() {
 
@@ -398,7 +433,25 @@
 
 
 
+var isGlowing = false;
 
+
+ function toggleGlow() {
+     if (isGlowing === false) {
+         document.getElementById("toggleGlow").innerText = "Glow On";
+         isGlowing = true;
+         glowLineX.visible = true;
+         glowLineY.visible = true;
+         glowLineZ.visible = true;
+
+     } else {
+         document.getElementById("toggleGlow").innerText = "Glow Off";
+         isGlowing = false;
+         glowLineX.visible = false;
+         glowLineY.visible = false;
+         glowLineZ.visible = false;
+     }
+ }
 
 
 
