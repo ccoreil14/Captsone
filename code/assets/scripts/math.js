@@ -6,12 +6,12 @@ function perimeter(x,y) {
     return (x*2)+(y*2);
 }
 
-function circArea() {
-
+function circArea(r) {
+    return 3.14 * (r*r);
 }
 
-function circumfrence() {
-
+function circumfrence(r) {
+    return 3.14 * (r*2);
 }
 
 function prismSurfaceArea(x,y,z) {
@@ -22,10 +22,10 @@ function prismVolume(x,y,z) {
     return (x*y*z);
 }
 
-function sphereSurfaceArea() {
-
+function sphereSurfaceArea(r) {
+    return (4*3.14) * (r*r);
 }
 
-function sphereVolume() {
-
+function sphereVolume(r) {
+    return ((4/3)*3.14) * (r*r*r);
 }
