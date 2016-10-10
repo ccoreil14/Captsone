@@ -65,7 +65,7 @@ function toggleDynSizeCircle() {
     }
 }
 
-function toggleDynSizeCircle() {
+function toggleDynSizeSphere() {
     if (arrowIsVisible === false) {
         document.getElementById("toggleBtn").innerText = "Arrow Off";
         for (i = 0; i < 1; i++) {

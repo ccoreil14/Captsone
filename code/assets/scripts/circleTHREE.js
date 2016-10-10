@@ -109,7 +109,7 @@
      radiusLine = new THREE.Mesh(radiusLineGeometry, radiusLineMaterial);
      radiusLine.position.x = 10;
      radiusLine.rotation.z = 7.85;
-     radiusLine.visible = true;
+     radiusLine.visible = false;
      scene.add(radiusLine);
 
 

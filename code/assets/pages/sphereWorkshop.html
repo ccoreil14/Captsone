@@ -1,0 +1,75 @@
+<html>
+
+<head>
+    <title>ShapesList</title>
+    <link rel="shortcut icon" href="../images/Logo2.png">
+    <link rel="stylesheet" href="../stylesheets/main.css">
+    <link rel="stylesheet" href="../stylesheets/workshop.css">
+</head>
+
+<body>
+    <div id="menu" class="collapseBox">
+        <div id="menuHead" class="boxHeader">Login
+            <img id="menuArrow" class="arrow" src="../images/arrow.png" onclick="toggleMenu('menuInsides')" />
+        </div>
+        <ul id="menuInsides" class="boxInsides" style="visibility: collapse;">
+            <li class="insidesItem">Po</li>
+            <li class="insidesItem">Po</li>
+        </ul>
+    </div>
+    <div id="chatBox" class="collapseBox">
+        <div id="chatBoxHead" class="boxHeader">ChatBox
+            <img id="menuArrow" class="arrow" src="../images/arrow.png" onclick="toggleMenu('chatBoxInsides')" />
+        </div>
+        <ul id="chatBoxInsides" class="boxInsides" style="visibility: collapse;">
+            <li class="insidesItem">Hi</li>
+        </ul>
+    </div>
+    <img id="logo" src="../images/Logo3.png" />
+    <div class="workshopArea">
+        <div class="side leftSide">
+            <div class="formulaArea">
+                <div class="forumla">
+                    <h3>Surface Area:<h3 id="SphSurfAreaAnsr"></h3></h3></div>
+                <div class="forumla">
+                    <h3>Volume Area:<h3 id="SphVolAnsr"></h3></h3>
+                    
+                </div>
+            </div>
+            <div class="playBox"></div>
+        </div>
+        <div class="side rightSide">
+            <div class="shapeInfoBox">
+                <div class="coreMeasuresBox">
+                    <div class="coreMeasure">
+                        <h3>Radius</h3>
+                        <input id="radiusInput" type="number" value="20" onchange="updateShape()" />
+                    </div>
+                    
+                    
+                </div>
+                <div class="btnArea">
+                    <div class="resetBtn">
+                        <button id="toggleBtn" onclick="toggleDynSizeSphere()">Arrows Off</button>
+                        <button onclick="resetCanvas()">reset shape</button>
+                        <button id="toggleGlow" onclick="toggleGlow()">Glow On</button>
+                    </div>
+                    <div class="lessonBtn">learn move/take exam</div>
+                </div>
+            </div>
+            <div class="descripBox">
+                Description
+            </div>
+        </div>
+
+    </div>
+</body>
+<footer>Site made and owned by Christian F. Coreil</footer>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/Math.js"></script>
+<script src="../scripts/three.min.js"></script>
+<script src="../scripts/TrackballControls.js"></script>
+<script src="../scripts/sphereTHREE.js"></script>
+<script src="../scripts/ButtonActions.js"></script>
+
+</html>
