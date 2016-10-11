@@ -15,6 +15,7 @@
  var arrow1Y, arrow2X, arrow3Z;
  var lineX, lineY, lineZ;
  var glowLineX, glowLineY, glowLineZ;
+ //some how i reverse glowlineX and glowlineY so remeber that
 
  var playbox = document.getElementsByClassName("playBox")[0];
  var threeHeight = 500;
@@ -96,22 +97,22 @@
 
      scene.add(mainObj);
 
-     
-     
-     
+
+
+
      glowLineGeometry = new THREE.CylinderGeometry(1, 1, 40);
      glowLineMaterial = new THREE.LineBasicMaterial({
          color: 0xffffff,
          transparent: true,
          opacity: 0.8
      });
-     
+
      glowLineX = new THREE.Mesh(glowLineGeometry, glowLineMaterial);
      glowLineX.position.x = 20;
      glowLineX.position.z = 20;
      glowLineX.visible = false;
      scene.add(glowLineX);
-     
+
      glowLineY = new THREE.Mesh(glowLineGeometry, glowLineMaterial);
      glowLineY.position.y = 20;
      glowLineY.position.z = 20;
@@ -119,18 +120,18 @@
      glowLineY.rotation.x = 1.569;
      glowLineY.rotation.z = 1.569;
      scene.add(glowLineY);
-     
+
      glowLineZ = new THREE.Mesh(glowLineGeometry, glowLineMaterial);
-     
+
      glowLineZ.position.x = 20;
-     glowLineZ.position.y =20;
+     glowLineZ.position.y = 20;
      glowLineZ.visible = false;
      glowLineZ.rotation.x = 1.569;
      scene.add(glowLineZ);
 
-     
-     
-     
+
+
+
 
 
      lineGeometry = new THREE.CylinderGeometry(0.1, 0.1, 100000);
@@ -230,33 +231,67 @@
 
                  SELECTED.position.x = 0;
                  SELECTED.position.y = 0;
-                 mainObj.scale.z = ((arrow3Z - SELECTED.position.z) + 20) / (prismZ / 2);
+                 var spacingZ = ((arrow3Z - SELECTED.position.z) + 20);
+                 mainObj.scale.z = spacingZ / (prismZ / 2);
+
+                 glowLineZ.scale.y = spacingZ / (prismZ / 2);
+
+                 glowLineX.position.z = spacingZ;
+
+                 glowLineY.position.z = spacingZ;
                  //                    console.log(SELECTED.position);
                  if (SELECTED.position.z >= (arrow3Z)) {
                      SELECTED.position.z = arrow3Z;
                      mainObj.scale.z = 1;
+                     glowLineZ.scale.y = 1;
+                     glowLineX.position.z = 20;
+                     glowLineY.position.z = 20;
                  }
              } else if (SELECTED.rotation.z === -1.6) {
                  //                        SELECTED.position.copy(intersection.sub(offset));
                  console.log("x");
                  SELECTED.position.y = 0;
                  SELECTED.position.z = 0;
-                 mainObj.scale.x = ((SELECTED.position.x - arrow2X) + 20) / (prismX / 2);
+                 var spacingX = ((SELECTED.position.x - arrow2X) + 20);
+
+                 mainObj.scale.x = spacingX / (prismX / 2);
+
+                 glowLineY.scale.y = spacingX / (prismX / 2);
+
+                 glowLineX.position.x = spacingX;
+
+                 glowLineZ.position.x = spacingX;
+
+
                  //                    console.log(SELECTED.position);
                  if (SELECTED.position.x <= (arrow2X)) {
                      SELECTED.position.x = arrow2X;
                      mainObj.scale.x = 1;
+                     glowLineY.scale.y = 1;
+                     glowLineX.position.x = 20;
+                     glowLineZ.position.x = 20;
                  }
              } else {
                  //                        SELECTED.position.copy(intersection.sub(offset));
                  console.log("y");
                  SELECTED.position.x = 0;
                  SELECTED.position.z = 0;
-                 mainObj.scale.y = ((SELECTED.position.y - arrow1Y) + 20) / (prismY / 2);
+                 var spacingY = ((SELECTED.position.y - arrow1Y) + 20);
+
+                 mainObj.scale.y = spacingY / (prismY / 2);
+
+                 glowLineX.scale.y = spacingY / (prismX / 2);
+
+                 glowLineY.position.y = spacingY;
+
+                 glowLineZ.position.y = spacingY;
                  //                    console.log(SELECTED.position);
                  if (SELECTED.position.y <= (arrow1Y)) {
                      SELECTED.position.y = arrow1Y;
                      mainObj.scale.y = 1;
+                     glowLineX.scale.x = 1;
+                     glowLineY.position.y = 20;
+                     glowLineZ.position.y = 20;
                  }
              }
              updateInputs();
@@ -351,7 +386,6 @@
 
  }
 
-
  function render() {
 
      controls.update();
@@ -378,6 +412,7 @@
              arrows[i].position.z = -(prismZ) - 20;
          }
      }
+     resetGlowLines();
      scene.add(mainObj);
      updateFormulas();
  }
@@ -402,6 +437,7 @@
              //              console.log(arrows[i].position.y+ " : " + (prismZ));
          }
      }
+     updateGLines();
      updateFormulas();
  }
 
@@ -433,7 +469,7 @@
 
 
 
-var isGlowing = false;
+ var isGlowing = false;
 
 
  function toggleGlow() {
@@ -453,8 +489,43 @@ var isGlowing = false;
      }
  }
 
+ function resetGlowLines() {
+     glowLineX.position.x = 20;
+     glowLineX.position.z = 20;
+     glowLineX.scale.y = 1;
 
 
+     glowLineY.position.y = 20;
+     glowLineY.position.z = 20;
+     glowLineY.scale.y = 1;
+
+
+     glowLineZ.position.x = 20;
+     glowLineZ.position.y = 20;
+     glowLineZ.scale.y = 1;
+
+ }
+
+ function updateGLines() {
+
+     glowLineZ.scale.y = prismZ / 40;
+
+     glowLineX.position.z = prismZ / 2;
+
+     glowLineY.position.z = prismZ / 2;
+
+     glowLineY.scale.y = prismX / 40;
+
+     glowLineX.position.x = prismX / 2;
+
+     glowLineZ.position.x = prismX / 2;
+
+     glowLineX.scale.y = prismY / 40;
+
+     glowLineY.position.y = prismY / 2;
+
+     glowLineZ.position.y = prismY / 2;
+ }
 
 
  //yo
