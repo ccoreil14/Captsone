@@ -12,7 +12,7 @@
  var prismX = document.getElementById("widthInput").value;
  var prismY = document.getElementById("lengthInput").value;
 
-var arrow1Y, arrow2X;
+ var arrow1Y, arrow2X;
  var lineX, lineY;
  var glowLineX, glowLineY
 
@@ -96,32 +96,32 @@ var arrow1Y, arrow2X;
 
      scene.add(mainObj);
 
-     
-     
-     
+
+
+
      glowLineGeometry = new THREE.CylinderGeometry(1, 1, 40);
      glowLineMaterial = new THREE.LineBasicMaterial({
          color: 0xffffff,
          transparent: true,
          opacity: 0.8
      });
-     
+
      glowLineX = new THREE.Mesh(glowLineGeometry, glowLineMaterial);
      glowLineX.position.x = 20;
-//     glowLineX.position.z = 20;
+     //     glowLineX.position.z = 20;
      glowLineX.visible = false;
      scene.add(glowLineX);
-     
+
      glowLineY = new THREE.Mesh(glowLineGeometry, glowLineMaterial);
      glowLineY.position.y = 20;
-//     glowLineY.position.z = 20;
+     //     glowLineY.position.z = 20;
      glowLineY.visible = false;
      glowLineY.rotation.x = 1.569;
      glowLineY.rotation.z = 1.569;
      scene.add(glowLineY);
-     
-     
-     
+
+
+
 
 
      lineGeometry = new THREE.CylinderGeometry(0.1, 0.1, 100000);
@@ -134,7 +134,7 @@ var arrow1Y, arrow2X;
      lineY = new THREE.Mesh(lineGeometry, lineMaterial);
      scene.add(lineY);
 
-     
+
      lineX = new THREE.Mesh(lineGeometry, lineMaterial);
      lineX.rotation.z = 1.569;
      scene.add(lineX);
@@ -165,7 +165,7 @@ var arrow1Y, arrow2X;
              arrXRotaion = 0;
              arrYRotaion = 0;
              arrZRotaion = -1.6;
-         } 
+         }
 
 
          arrow.rotation.x = arrXRotaion;
@@ -206,27 +206,40 @@ var arrow1Y, arrow2X;
 
          if (raycaster.ray.intersectPlane(plane, intersection)) {
              SELECTED.position.copy(intersection.sub(offset));
-            if (SELECTED.rotation.z === -1.6) {
+             if (SELECTED.rotation.z === -1.6) {
                  //                        SELECTED.position.copy(intersection.sub(offset));
                  console.log("x");
                  SELECTED.position.y = 0;
                  SELECTED.position.z = 0;
-                 mainObj.scale.x = ((SELECTED.position.x - arrow2X) + 20) / (prismX / 2);
+                 var spacingX = ((SELECTED.position.x - arrow2X) + 20);
+                 mainObj.scale.x = spacingX / (prismX / 2);
+                 glowLineY.scale.y = spacingX / (prismX / 2);
+
+                 glowLineX.position.x = spacingX;
                  //                    console.log(SELECTED.position);
                  if (SELECTED.position.x <= (arrow2X)) {
                      SELECTED.position.x = arrow2X;
                      mainObj.scale.x = 1;
+                     glowLineY.scale.y = 1;
+                     glowLineX.position.x = 20;
                  }
              } else {
                  //                        SELECTED.position.copy(intersection.sub(offset));
                  console.log("y");
                  SELECTED.position.x = 0;
                  SELECTED.position.z = 0;
-                 mainObj.scale.y = ((SELECTED.position.y - arrow1Y) + 20) / (prismY / 2);
+                 var spacingY = ((SELECTED.position.y - arrow1Y) + 20);
+                 mainObj.scale.y =  spacingY/ (prismY / 2);
+                 glowLineX.scale.y = spacingY / (prismX / 2);
+
+                 glowLineY.position.y = spacingY;
+
                  //                    console.log(SELECTED.position);
                  if (SELECTED.position.y <= (arrow1Y)) {
                      SELECTED.position.y = arrow1Y;
                      mainObj.scale.y = 1;
+                     glowLineX.scale.x = 1;
+                     glowLineY.position.y = 20;
                  }
              }
              updateInputs();
@@ -346,6 +359,7 @@ var arrow1Y, arrow2X;
          }
      }
      scene.add(mainObj);
+     resetGlowLines();
      updateFormulas();
  }
 
@@ -353,7 +367,7 @@ var arrow1Y, arrow2X;
      scene.remove(mainObj);
      prismX = 1 * document.getElementById("widthInput").value;
      prismY = 1 * document.getElementById("lengthInput").value;
-     mainGeometry = new THREE.BoxGeometry(prismX, prismY,0.1);
+     mainGeometry = new THREE.BoxGeometry(prismX, prismY, 0.1);
      mainObj = new THREE.Mesh(mainGeometry, mainMaterial);
      scene.add(mainObj);
 
@@ -365,6 +379,7 @@ var arrow1Y, arrow2X;
              arrow2X = arrows[i].position.x = (prismX) + 20;
          }
      }
+     updateGLines();
      updateFormulas();
  }
 
@@ -392,7 +407,7 @@ var arrow1Y, arrow2X;
 
 
 
-var isGlowing = false;
+ var isGlowing = false;
 
 
  function toggleGlow() {
@@ -410,7 +425,25 @@ var isGlowing = false;
      }
  }
 
+ function resetGlowLines() {
+     glowLineX.position.x = 20;
+     glowLineX.scale.y = 1;
 
+
+     glowLineY.position.y = 20;
+     glowLineY.scale.y = 1;
+
+
+ }
+
+ function updateGLines() {
+
+     glowLineX.position.x = prismX / 2;
+     glowLineX.scale.y = prismY / 40;
+
+     glowLineY.scale.y = prismX / 40;
+     glowLineY.position.y = prismY / 2;
+ }
 
 
 

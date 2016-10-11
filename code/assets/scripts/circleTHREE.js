@@ -11,7 +11,7 @@
     
  var radius = document.getElementById("radiusInput").value;
 
- var diameter = radius *2;
+ var diameter = radius * 2;
  var arrow2X;
  var lineX;
  var radius;
@@ -197,13 +197,18 @@
                  console.log("x");
                  SELECTED.position.y = 0;
                  SELECTED.position.z = 0;
-                 mainObj.scale.x = ((SELECTED.position.x - arrow2X) + 20) / (diameter / 2);
-                 mainObj.scale.y = ((SELECTED.position.x - arrow2X) + 20) / (diameter / 2);
+                 var spacing = ((SELECTED.position.x - arrow2X) + 20)  ;
+                 mainObj.scale.x = spacing/ (diameter / 2);
+                 mainObj.scale.y = spacing/ (diameter / 2);
+                 radiusLine.scale.y = spacing/ (diameter / 2);
+                 radiusLine.position.x = spacing/2;
                  //                    console.log(SELECTED.position);
                  if (SELECTED.position.x <= (arrow2X)) {
                      SELECTED.position.x = arrow2X;
                      mainObj.scale.x = 1;
                      mainObj.scale.y = 1;
+                     radiusLine.scale.y = 1;
+                     radiusLine.position.x = 10;
                  }
              }
              updateInputs();
@@ -323,6 +328,7 @@
          }
      }
      scene.add(mainObj);
+     resetGlowLines();
      updateFormulas();
  }
 
@@ -339,6 +345,7 @@
              arrow2X = arrows[i].position.x = (diameter) + 20;
          }
      }
+     updateGLines();
      updateFormulas();
  }
 
@@ -378,7 +385,19 @@
      }
  }
 
+ function resetGlowLines() {
+     radiusLine.position.x = 10;
+     radiusLine.scale.y = 1;
 
+
+ }
+
+ function updateGLines() {
+
+     radiusLine.position.x = radius/2;
+     radiusLine.scale.y = diameter / 40;
+
+ }
 
 
 
