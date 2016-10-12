@@ -5,6 +5,7 @@ footer {
     transform: translate(-50%, -50%);
 }
 
+
 /*
 body{
     min-width: 900px;
@@ -29,7 +30,6 @@ body{
     position: absolute;
     right: 10px;
     top: 10px;
-    
 }
 
 .collapseBox {
@@ -37,7 +37,6 @@ body{
     height: 100px;
     border: 2px solid black;
 }
-
 
 
 /*dropdown header*/
@@ -63,10 +62,8 @@ body{
     cursor: pointer;
 }
 
+
 /*dropdown header*/
-
-
-
 
 
 /*dropdown insides*/
@@ -83,9 +80,6 @@ body{
 /*dropdown insides*/
 
 
-
-
-
 /*dropdown Items*/
 
 .insidesItem {
@@ -96,6 +90,9 @@ body{
     border: 1px dotted blue;
     list-style-type: none;
     margin-left: 0;
+    z-index: 100;
+    position: relative;
+    background-color: white;
 }
 
 .insidesItem:hover {
@@ -104,27 +101,5 @@ body{
     cursor: pointer;
 }
 
+
 /*dropdown Items*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

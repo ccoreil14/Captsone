@@ -289,7 +289,7 @@
                  if (SELECTED.position.y <= (arrow1Y)) {
                      SELECTED.position.y = arrow1Y;
                      mainObj.scale.y = 1;
-                     glowLineX.scale.x = 1;
+                     glowLineX.scale.y = 1;
                      glowLineY.position.y = 20;
                      glowLineZ.position.y = 20;
                  }
