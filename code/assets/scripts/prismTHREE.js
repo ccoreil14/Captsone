@@ -136,9 +136,7 @@
 
      lineGeometry = new THREE.CylinderGeometry(0.1, 0.1, 100000);
      lineMaterial = new THREE.LineBasicMaterial({
-         color: 0xffffff,
-         transparent: true,
-         opacity: 0.8
+         color: 0xffffff
      });
 
      lineY = new THREE.Mesh(lineGeometry, lineMaterial);
@@ -154,17 +152,24 @@
 
 
      arrowGeometry = new THREE.ConeGeometry(10, 1);
-     arrowMaterial = new THREE.MeshLambertMaterial({
-         color: 0xffffff
+     arrowMaterialG = new THREE.MeshLambertMaterial({
+         color: 0x00B700
+     });
+     arrowMaterialB = new THREE.MeshLambertMaterial({
+         color: 0x4C4CFF
+     });
+     arrowMaterialR = new THREE.MeshLambertMaterial({
+         color: 0xFF0000
      });
 
 
 
 
      for (i = 0; i < 3; i++) {
-         var arrow = new THREE.Mesh(arrowGeometry, arrowMaterial);
+         
 
          if (i === 0) {
+             var arrow = new THREE.Mesh(arrowGeometry, arrowMaterialG);
              arrow1Y = arrow.position.y = 60;
              arrow.position.x = 0;
              arrow.position.z = 0;
@@ -172,6 +177,7 @@
              arrYRotaion = 0;
              arrZRotaion = 0;
          } else if (i === 1) {
+             var arrow = new THREE.Mesh(arrowGeometry, arrowMaterialB);
              arrow.position.y = 0;
              arrow2X = arrow.position.x = 60;
              arrow.position.z = 0;
@@ -179,6 +185,7 @@
              arrYRotaion = 0;
              arrZRotaion = -1.6;
          } else if (i === 2) {
+             var arrow = new THREE.Mesh(arrowGeometry, arrowMaterialR);
              arrow.position.y = 0;
              arrow.position.x = 0;
              arrow3Z = arrow.position.z = -60;

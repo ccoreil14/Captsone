@@ -45,8 +45,8 @@
 
      camera = new THREE.PerspectiveCamera(10, threeWidth / threeHeight, 1, 10000000);
      camera.position.z = 1000;
-     camera.position.y = 600;
-     camera.position.x = 800;
+     camera.position.y = 0;
+     camera.position.x = 0;
 
      renderer = new THREE.WebGLRenderer({
          antialias: true
@@ -70,7 +70,7 @@
      renderer.domElement.addEventListener('mouseup', onDocumentMouseUp, false);
 
      controls = new THREE.TrackballControls(camera, renderer.domElement);
-     controls.rotateSpeed = 1.0;
+     controls.rotateSpeed = 0;
      controls.zoomSpeed = 0.2;
      controls.panSpeed = 0.9;
      controls.noZoom = false;
@@ -108,13 +108,11 @@
 
      glowLineX = new THREE.Mesh(glowLineGeometry, glowLineMaterial);
      glowLineX.position.x = 20;
-     //     glowLineX.position.z = 20;
      glowLineX.visible = false;
      scene.add(glowLineX);
 
      glowLineY = new THREE.Mesh(glowLineGeometry, glowLineMaterial);
      glowLineY.position.y = 20;
-     //     glowLineY.position.z = 20;
      glowLineY.visible = false;
      glowLineY.rotation.x = 1.569;
      glowLineY.rotation.z = 1.569;
@@ -141,17 +139,20 @@
 
 
      arrowGeometry = new THREE.ConeGeometry(10, 1);
-     arrowMaterial = new THREE.MeshLambertMaterial({
-         color: 0xffffff
+     arrowMaterialG = new THREE.MeshLambertMaterial({
+         color: 0x00B700
+     });
+     arrowMaterialB = new THREE.MeshLambertMaterial({
+         color: 0x4C4CFF
      });
 
 
 
-
      for (i = 0; i < 2; i++) {
-         var arrow = new THREE.Mesh(arrowGeometry, arrowMaterial);
+         
 
          if (i === 0) {
+             var arrow = new THREE.Mesh(arrowGeometry, arrowMaterialG);
              arrow1Y = arrow.position.y = 60;
              arrow.position.x = 0;
              arrow.position.z = 0;
@@ -159,6 +160,7 @@
              arrYRotaion = 0;
              arrZRotaion = 0;
          } else if (i === 1) {
+             var arrow = new THREE.Mesh(arrowGeometry, arrowMaterialB);
              arrow.position.y = 0;
              arrow2X = arrow.position.x = 60;
              arrow.position.z = 0;
@@ -194,8 +196,6 @@
  function onDocumentMouseMove(event) {
      event.preventDefault();
 
-     //     var topSize = document.getElementById("mainBody").clientHeight;
-     //     console.log(topSize);
      mouse.x = ((event.clientX - 363) / 500) * 2 - 1;
      mouse.y = -((event.clientY - 405) / 500) * 2 + 1;
      //                  ^  affects how it tracks mouse in three js for dragging
@@ -229,7 +229,7 @@
                  SELECTED.position.x = 0;
                  SELECTED.position.z = 0;
                  var spacingY = ((SELECTED.position.y - arrow1Y) + 20);
-                 mainObj.scale.y =  spacingY/ (prismY / 2);
+                 mainObj.scale.y = spacingY / (prismY / 2);
                  glowLineX.scale.y = spacingY / (prismX / 2);
 
                  glowLineY.position.y = spacingY;

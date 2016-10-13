@@ -45,8 +45,6 @@
 
      camera = new THREE.PerspectiveCamera(10, threeWidth / threeHeight, 1, 10000000);
      camera.position.z = 1000;
-     camera.position.y = 600;
-     camera.position.x = 800;
 
      renderer = new THREE.WebGLRenderer({
          antialias: true
@@ -70,7 +68,7 @@
      renderer.domElement.addEventListener('mouseup', onDocumentMouseUp, false);
 
      controls = new THREE.TrackballControls(camera, renderer.domElement);
-     controls.rotateSpeed = 1.0;
+     controls.rotateSpeed = 0;
      controls.zoomSpeed = 0.2;
      controls.panSpeed = 0.9;
      controls.noZoom = false;
