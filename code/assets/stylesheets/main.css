@@ -6,11 +6,9 @@ footer {
 }
 
 
-/*
 body{
-    min-width: 900px;
+    min-height: 900px;
 }
-*/
 
 #logo {
     display: block;

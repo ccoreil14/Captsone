@@ -96,6 +96,18 @@
      light.shadow.mapSize.height = threeHeight;
 
      scene.add(light);
+     
+     var light2 = new THREE.SpotLight(0xffffff, 1.5);
+     light2.position.set(0, 500, -2000);
+     light2.castShadow = true;
+
+     light2.shadow = new THREE.LightShadow(new THREE.PerspectiveCamera(50, 1, 200, 10000));
+     light2.shadow.bias = -0.00022;
+
+     light2.shadow.mapSize.width = threeWidth;
+     light2.shadow.mapSize.height = threeHeight;
+
+     scene.add(light2);
 
      scene.add(mainObj);
 
@@ -198,20 +210,20 @@
                  console.log("x");
                  SELECTED.position.y = 0;
                  SELECTED.position.z = 0;
-                 var spacing = ((SELECTED.position.x - arrow2X) + 20);
+                 var spacing = (SELECTED.position.x - 41);
                  mainObj.scale.x = spacing / (diameter / 2);
                  mainObj.scale.y = spacing / (diameter / 2);
                  mainObj.scale.z = spacing / (diameter / 2);
-                 radiusLine.scale.y = spacing/ (diameter / 2);             
+                 radiusLine.scale.y = spacing / (diameter / 2);
                  radiusLine.position.x = spacing / 2;
-                 console.log(SELECTED.position);
+                 //                 console.log(SELECTED.position);
                  if (SELECTED.position.x <= (arrow2X)) {
                      SELECTED.position.x = arrow2X;
-                     mainObj.scale.x = 1;
-                     mainObj.scale.y = 1;
-                     mainObj.scale.z = 1;
-                     radiusLine.scale.y = 1;
-                     radiusLine.position.x = 10;
+                     mainObj.scale.x = 0.025;
+                     mainObj.scale.y = 0.025;
+                     mainObj.scale.z = 0.025;
+                     radiusLine.scale.y = 0.025;
+                     radiusLine.position.x = 0.5;
                  }
              }
              updateInputs();
@@ -338,9 +350,16 @@
  function updateShape() {
      scene.remove(mainObj);
      radius = 1 * document.getElementById("radiusInput").value;
+     var sphereColor = document.getElementById("colorInput").value;
+     if (radius < 1) {
+         radius = 1;
+         document.getElementById("radiusInput").value = 1;
+     }
      diameter = radius * 2;
      mainGeometry = new THREE.SphereGeometry(radius, 64);
      mainObj = new THREE.Mesh(mainGeometry, mainMaterial);
+
+     mainObj.material.color.setHex('0x' + sphereColor);
      scene.add(mainObj);
 
      for (i = 0; i < 1; i++) {

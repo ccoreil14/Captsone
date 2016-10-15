@@ -45,12 +45,16 @@
             <div class="shapeInfoBox">
                 <div class="coreMeasuresBox">
                     <div class="coreMeasure">
-                        <h3>Length / X</h3>
-                        <input id="widthInput" type="number" value="40" onchange="updateShape()" />
+                        <h3>Width / X</h3>
+                        <input id="widthInput" class="bInput" type="number" value="40" onchange="updateShape()" />
                     </div>
                     <div class="coreMeasure">
-                        <h3>Width / Y</h3>
-                        <input id="lengthInput" type="number" value="40" onchange="updateShape()" />
+                        <h3>Length / Y</h3>
+                        <input id="lengthInput" class="gInput" type="number" value="40" onchange="updateShape()" />
+                    </div>
+                    <div class="coreMeasure">
+                        <h3>Shape Color</h3>
+                        <input id="colorInput" class="jscolor" value="000ff0" onchange="updateShape()" readonly />
                     </div>
                     
                 </div>
@@ -77,5 +81,7 @@
 <script src="../scripts/TrackballControls.js"></script>
 <script src="../scripts/squareTHREE.js"></script>
 <script src="../scripts/ButtonActions.js"></script>
+<script src="../scripts/jscolor.js"></script>
+
 
 </html>

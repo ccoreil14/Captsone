@@ -78,6 +78,8 @@
      controls.noPan = true;
      controls.staticMoving = true;
      controls.dynamicDampingFactor = 0.3;
+     controls.minDistance = 10;
+     controls.maxDistance = 10000;
 
      scene = new THREE.Scene();
 
@@ -94,6 +96,18 @@
      light.shadow.mapSize.height = threeHeight;
 
      scene.add(light);
+     
+     var light2 = new THREE.SpotLight(0xffffff, 1.5);
+     light2.position.set(0, 500, -2000);
+     light2.castShadow = true;
+
+     light2.shadow = new THREE.LightShadow(new THREE.PerspectiveCamera(50, 1, 200, 10000));
+     light2.shadow.bias = -0.00022;
+
+     light2.shadow.mapSize.width = threeWidth;
+     light2.shadow.mapSize.height = threeHeight;
+
+     scene.add(light2);
 
      scene.add(mainObj);
 
@@ -166,7 +180,7 @@
 
 
      for (i = 0; i < 3; i++) {
-         
+
 
          if (i === 0) {
              var arrow = new THREE.Mesh(arrowGeometry, arrowMaterialG);
@@ -238,7 +252,7 @@
 
                  SELECTED.position.x = 0;
                  SELECTED.position.y = 0;
-                 var spacingZ = ((arrow3Z - SELECTED.position.z) + 20);
+                 var spacingZ = (-41 - SELECTED.position.z);
                  mainObj.scale.z = spacingZ / (prismZ / 2);
 
                  glowLineZ.scale.y = spacingZ / (prismZ / 2);
@@ -247,19 +261,19 @@
 
                  glowLineY.position.z = spacingZ;
                  //                    console.log(SELECTED.position);
-                 if (SELECTED.position.z >= (arrow3Z)) {
-                     SELECTED.position.z = arrow3Z;
-                     mainObj.scale.z = 1;
-                     glowLineZ.scale.y = 1;
-                     glowLineX.position.z = 20;
-                     glowLineY.position.z = 20;
+                 if (SELECTED.position.z >= -41) {
+                     SELECTED.position.z = -41;
+                     mainObj.scale.z = 0.025;
+                     glowLineZ.scale.y = 0.025;
+                     glowLineX.position.z = 0.5;
+                     glowLineY.position.z = 0.5;
                  }
              } else if (SELECTED.rotation.z === -1.6) {
                  //                        SELECTED.position.copy(intersection.sub(offset));
                  console.log("x");
                  SELECTED.position.y = 0;
                  SELECTED.position.z = 0;
-                 var spacingX = ((SELECTED.position.x - arrow2X) + 20);
+                 var spacingX = (SELECTED.position.x - 41);
 
                  mainObj.scale.x = spacingX / (prismX / 2);
 
@@ -271,19 +285,19 @@
 
 
                  //                    console.log(SELECTED.position);
-                 if (SELECTED.position.x <= (arrow2X)) {
-                     SELECTED.position.x = arrow2X;
-                     mainObj.scale.x = 1;
-                     glowLineY.scale.y = 1;
-                     glowLineX.position.x = 20;
-                     glowLineZ.position.x = 20;
+                 if (SELECTED.position.x <= 41) {
+                     SELECTED.position.x = 41;
+                     mainObj.scale.x = 0.025;
+                     glowLineY.scale.y = 0.025;
+                     glowLineX.position.x = 0.5;
+                     glowLineZ.position.x = 0.5;
                  }
              } else {
                  //                        SELECTED.position.copy(intersection.sub(offset));
                  console.log("y");
                  SELECTED.position.x = 0;
                  SELECTED.position.z = 0;
-                 var spacingY = ((SELECTED.position.y - arrow1Y) + 20);
+                 var spacingY = (SELECTED.position.y - 41);
 
                  mainObj.scale.y = spacingY / (prismY / 2);
 
@@ -293,12 +307,12 @@
 
                  glowLineZ.position.y = spacingY;
                  //                    console.log(SELECTED.position);
-                 if (SELECTED.position.y <= (arrow1Y)) {
-                     SELECTED.position.y = arrow1Y;
-                     mainObj.scale.y = 1;
-                     glowLineX.scale.y = 1;
-                     glowLineY.position.y = 20;
-                     glowLineZ.position.y = 20;
+                 if (SELECTED.position.y <= 41) {
+                     SELECTED.position.y = 41;
+                     mainObj.scale.y = 0.025;
+                     glowLineX.scale.y = 0.025;
+                     glowLineY.position.y = 0.5;
+                     glowLineZ.position.y = 0.5;
                  }
              }
              updateInputs();
@@ -429,9 +443,26 @@
      prismX = 1 * document.getElementById("widthInput").value;
      prismY = 1 * document.getElementById("lengthInput").value;
      prismZ = 1 * document.getElementById("heightInput").value;
+     var prismColor = document.getElementById("colorInput").value;
      mainGeometry = new THREE.BoxGeometry(prismX, prismY, prismZ);
      mainObj = new THREE.Mesh(mainGeometry, mainMaterial);
+     mainObj.material.color.setHex('0x'+prismColor);
      scene.add(mainObj);
+
+     if (prismX < 1) {
+         prismX = 1;
+         document.getElementById("widthInput").value = 1;
+     }
+
+     if (prismY < 1) {
+         prismY = 1;
+         document.getElementById("lengthInput").value = 1;
+     }
+
+     if (prismZ < 1) {
+         prismZ = 1;
+         document.getElementById("heightInput").value = 1;
+     }
 
      for (i = 0; i < 3; i++) {
          if (i === 0) {
@@ -441,7 +472,6 @@
              arrow2X = arrows[i].position.x = (prismX) + 20;
          } else if (i === 2) {
              arrow3Z = arrows[i].position.z = -(prismZ) - 20;
-             //              console.log(arrows[i].position.y+ " : " + (prismZ));
          }
      }
      updateGLines();
@@ -457,9 +487,9 @@
      var lInput = document.getElementById("lengthInput");
      var hInput = document.getElementById("heightInput");
 
-     wInput.value = Math.round(arrowY) - 20;
-     lInput.value = Math.round(arrowX) - 20;
-     hInput.value = Math.round(arrowZ) - 20;
+     wInput.value = Math.round(mainObj.scale.x * 40);
+     lInput.value = Math.round(mainObj.scale.y * 40);
+     hInput.value = Math.round(mainObj.scale.z * 40);
 
  }
 

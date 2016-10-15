@@ -66,10 +66,23 @@ body{
 .coreMeasuresBox{
     height: 70%;
     border: 1px solid black; 
+    overflow-y: scroll;
 }
 
 .coreMeasure{
     border: 1px solid black;
+}
+
+.gInput{
+    background: #00B700;
+}
+
+.bInput{
+    background: #4C4CFF;
+}
+
+.rInput{
+    background: #FF0000;
 }
 
 /*Area for all shape related customization*/

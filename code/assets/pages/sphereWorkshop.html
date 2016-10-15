@@ -48,8 +48,10 @@
                         <h3>Radius</h3>
                         <input id="radiusInput" type="number" value="20" onchange="updateShape()" />
                     </div>
-                    
-                    
+                    <div class="coreMeasure">
+                        <h3>Shape Color</h3>
+                        <input id="colorInput" class="jscolor" value="000ff0" onchange="updateShape()" readonly />
+                    </div>                    
                 </div>
                 <div class="btnArea">
                     <div class="resetBtn">
@@ -74,5 +76,6 @@
 <script src="../scripts/TrackballControls.js"></script>
 <script src="../scripts/sphereTHREE.js"></script>
 <script src="../scripts/ButtonActions.js"></script>
+<script src="../scripts/jscolor.js"></script>
 
 </html>
